@@ -18,6 +18,6 @@ Par exemple :
 - Title.mp3
 - Scene.mp3
 - Credits.mp3
-<br>
+<br> 
 Étonamment, massRename.py semble ne fonctionner que lorsqu'il est lancé dans VSCode.<br>
 Lancer le script tel quel n'aura aucun effet.

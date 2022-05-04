@@ -6,16 +6,19 @@
 import os
 import pathlib
 
-# ---------------------------------------------------------------------------------------------------------------------
-#
-# ---------------------------------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------------------------- #
+# ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ #
+#												M A S S   R E N A M E													#
+# ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ - ♦ #
+# --------------------------------------------------------------------------------------------------------------------- #
 
-chaine = True
+running = True
 
 # Boucle infinie tant que la chaîne de caractères entrée est invalide ou introuvable
-while chaine :
+while running :
 	# La chaîne de caractères à retirer
-	chaineRetirer = str(input("Entrez la chaîne de caractères à retirer : "))
+	
+	stringToRemove = input("Entrez la chaîne de caractères à retirer : ")
 
 	# Définition du dossier parent du script
 	directory = pathlib.Path(__file__).parent.resolve()
@@ -33,9 +36,9 @@ while chaine :
 		oldFile = file
 		oldFilePath = os.path.abspath(oldFile)
 
-		if chaineRetirer in oldFile :
+		if stringToRemove in oldFile :
 			# New file name
-			newFile = file.replace(chaineRetirer, "")
+			newFile = file.replace(stringToRemove, "")
 			newFilePath = f"{directory}\{newFile}"
 			# The "First character is space" prevention
 			while newFile.startswith(" ") :
@@ -56,15 +59,15 @@ while chaine :
 					print(f"\"{newFile}\" existait déjà. \"{oldFile}\" l'a remplacé.\n")
 				except :
 					# Si vraiment ça veut pas.
-					print("Une erreur est survenue lors de la tentative de suppression de la chaîne de caractères \"{}\" dans \"{}\".\n".format(chaineRetirer, file))
+					print("Une erreur est survenue lors de la tentative de suppression de la chaîne de caractères \"{}\" dans \"{}\".\n".format(stringToRemove, file))
 					print("Vérifiez qu'un fichier du même nom n'existe pas déjà.")
 			except :
-				print("Une erreur est survenue lors de la tentative de suppression de la chaîne de caractères \"{}\" dans \"{}\".\n".format(chaineRetirer, file))
+				print("Une erreur est survenue lors de la tentative de suppression de la chaîne de caractères \"{}\" dans \"{}\".\n".format(stringToRemove, file))
 				os.remove()
 			finally :
-				chaine = False
+				running = False
 		else :
-			print("La chaîne de caractères \"{}\" est introuvable dans \"{}\".\n".format(chaineRetirer, file))
+			print("La chaîne de caractères \"{}\" est introuvable dans \"{}\".\n".format(stringToRemove, file))
 			erreurs += 1
 			# chaine = True
 			# break
