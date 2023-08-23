@@ -5,6 +5,7 @@ from datetime import datetime
 
 from src.FileInfos import FileInfos
 
+# TODO: Renaming "All" files formats doesn't work.
 def mass_rename(
   affected_directory: str,
   string_to_remove: str,
@@ -12,6 +13,27 @@ def mass_rename(
   file_extension: str,
   delete_original_files: bool
 ):
+  """Rename files in the specified directory.
+
+  Args:
+    affected_directory (str): The directory path where the files will be renamed.
+    string_to_remove (str): The string to be removed from the file names.
+    string_to_add (str): The string to be added to the file names.
+    file_extension (str): The file extension to filter files. Use "Everything" to include all files.
+    delete_original_files (bool): Flag to indicate whether to delete the original files.
+
+  Returns:
+    dict: A dictionary containing information about the renaming process. The dictionary has the following keys:
+      - "original_files": A list of FileInfos objects representing the original files.
+      - "new_files": A list of FileInfos objects representing the renamed files.
+      - "errors": A list of any errors that occurred during the renaming process.
+      - "current_timestamp": The current timestamp when the renaming process started.
+      - "destination": The path to the directory where the renamed files are stored.
+
+  Raises:
+    FileNotFoundError: If the specified directory does not exist.
+  """
+
   current_timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
   infos = {
