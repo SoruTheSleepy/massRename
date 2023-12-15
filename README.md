@@ -9,7 +9,7 @@ Par exemple :
 - Soundtrack - Scene.mp3
 - Soundtrack - Credits.mp3
 
-### 3. Le programme renommera donc les fichiers ainsi :
+### 2. Le programme renommera donc les fichiers ainsi :
 - Opening.mp3
 - Title.mp3
 - Scene.mp3
